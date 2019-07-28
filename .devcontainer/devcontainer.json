@@ -1,0 +1,5 @@
+{
+  "name": "latex-lint-ja",
+  "dockerFile": "Dockerfile",
+  "extensions": ["james-yu.latex-workshop", "taichi.vscode-textlint"]
+}

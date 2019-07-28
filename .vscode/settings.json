@@ -1,0 +1,47 @@
+{
+  "editor.formatOnSave": true,
+  "files.autoSave": "afterDelay",
+  "terminal.integrated.shell.linux": "/bin/bash",
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": ["-pdfdvi", "%DOC%"]
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk",
+      "tools": ["latexmk"]
+    }
+  ],
+  "latex-workshop.latex.clean.fileTypes": [
+    "*.aux",
+    "*.bbl",
+    "*.blg",
+    "*.idx",
+    "*.ind",
+    "*.lof",
+    "*.lot",
+    "*.out",
+    "*.toc",
+    "*.acn",
+    "*.acr",
+    "*.alg",
+    "*.glg",
+    "*.glo",
+    "*.gls",
+    "*.ist",
+    "*.fls",
+    "*.log",
+    "*.fdb_latexmk",
+    "*.synctex.gz",
+    // for Beamer files
+    "_minted*",
+    "*.nav",
+    "*.snm",
+    "*.vrb"
+  ],
+  "latex-workshop.latex.outDir": "%DIR%/out",
+  "latex-workshop.view.pdf.viewer": "tab"
+}
