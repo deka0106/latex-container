@@ -1,12 +1,11 @@
 {
-  "name": "latex-lint-ja",
+  "name": "latexmk-textlint",
   "dockerFile": "Dockerfile",
   "extensions": ["james-yu.latex-workshop", "taichi.vscode-textlint"],
   "settings": {
     "editor.formatOnSave": true,
     "files.autoSave": "afterDelay",
     "terminal.integrated.shell.linux": "/bin/bash",
-    "latex-workshop.chktex.enabled": true,
     "latex-workshop.latex.tools": [
       {
         "name": "latexmk",

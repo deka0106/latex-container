@@ -1,13 +1,23 @@
-FROM paperist/alpine-texlive-ja
+FROM ubuntu:eoan
 
-RUN apk --no-cache add \
+ENV DEBIAN_FRONTEND noninteractive
+ENV DEBCONF_NOWARNINGS yes
+
+RUN apt-get update \
+    && apt-get -y install \
     git \
-    ghostscript \
     make \
+    texlive-lang-cjk \
+    texlive-fonts-recommended \
+    texlive-fonts-extra \
+    texlive-extra-utils \
+    latexmk \
+    cpanminus \ 
+    nodejs \
     npm \
-    perl-app-cpanminus \
-    perl-sub-identify \
-    perl-unicode-linebreak
+    && apt-get autoremove -y \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # for latexindent
 RUN cpanm \
