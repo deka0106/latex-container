@@ -47,6 +47,9 @@
       "*.vrb"
     ],
     "latex-workshop.latex.outDir": "%DIR%/out",
-    "latex-workshop.view.pdf.viewer": "tab"
+    "latex-workshop.view.pdf.viewer": "tab",
+    "files.associations": {
+      ".textlintrc": "jsonc"
+    }
   }
 }
