@@ -1,10 +1,9 @@
 {
-  "filters": {},
   "rules": {
-    "preset-ja-spacing": true,
-    "preset-ja-technical-writing": true,
     "preset-japanese": true,
-    "spellcheck-tech-word": true
+    "preset-ja-technical-writing": {
+      "max-kanji-continuous-len": false
+    }
   },
   "plugins": ["latex2e"]
 }

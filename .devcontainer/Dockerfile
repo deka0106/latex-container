@@ -30,8 +30,6 @@ RUN cpanm \
 # for textlint
 RUN npm i -g \
     textlint \
-    textlint-rule-preset-ja-spacing \
-    textlint-rule-preset-ja-technical-writing \
     textlint-rule-preset-japanese \
-    textlint-rule-spellcheck-tech-word \
+    textlint-rule-preset-ja-technical-writing \
     textlint-plugin-latex2e
