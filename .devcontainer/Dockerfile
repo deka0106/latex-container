@@ -5,6 +5,7 @@ ENV DEBCONF_NOWARNINGS yes
 
 RUN apt-get update \
     && apt-get -y install \
+    curl \
     git \
     make \
     texlive-lang-cjk \
@@ -12,23 +13,21 @@ RUN apt-get update \
     texlive-fonts-extra \
     texlive-extra-utils \
     latexmk \
-    cpanminus \ 
+    cpanminus \
     nodejs \
-    npm \
     && apt-get autoremove -y \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
-# for latexindent
-RUN cpanm \
-    Log::Log4perl \
-    Log::Dispatch::File \
+    && rm -rf /var/lib/apt/lists/* \
+    # for latexindent
+    && cpanm \
     YAML::Tiny \
     File::HomeDir \
-    Unicode::GCString
-
-# for textlint
-RUN npm i -g \
+    Unicode::GCString \
+    Log::Log4perl \
+    Log::Dispatch \
+    # for textlint
+    && curl -L https://npmjs.org/install.sh | sh \
+    && npm i -g \
     textlint \
     textlint-rule-preset-japanese \
     textlint-rule-preset-ja-technical-writing \
