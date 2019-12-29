@@ -14,7 +14,7 @@ RUN apt-get update \
     texlive-extra-utils \
     latexmk \
     nodejs \
-    python3 \
+    jq \
     && apt-get autoremove -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
