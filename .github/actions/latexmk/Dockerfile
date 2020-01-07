@@ -1,18 +1,13 @@
-FROM ubuntu:eoan
+FROM deka0106/latexmk-ja
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NOWARNINGS yes
 
 RUN apt-get update \
     && apt-get -y install \
-    curl \
     git \
+    curl \
     make \
-    texlive-lang-cjk \
-    texlive-fonts-recommended \
-    texlive-fonts-extra \
-    texlive-extra-utils \
-    latexmk \
     nodejs \
     jq \
     && apt-get autoremove -y \
