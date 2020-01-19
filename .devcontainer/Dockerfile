@@ -5,9 +5,9 @@ ENV DEBCONF_NOWARNINGS yes
 
 RUN apt-get update \
     && apt-get -y install \
-    git \
+    build-essential \
     curl \
-    make \
+    git \
     cpanminus \
     nodejs \
     && apt-get autoremove -y \
@@ -21,9 +21,4 @@ RUN apt-get update \
     Log::Log4perl \
     Log::Dispatch \
     # for textlint
-    && curl -L https://npmjs.org/install.sh | sh \
-    && npm i -g \
-    textlint \
-    textlint-rule-preset-japanese \
-    textlint-rule-preset-ja-technical-writing \
-    textlint-plugin-latex2e
+    && curl -L https://npmjs.org/install.sh | sh
