@@ -1,15 +1,14 @@
 #!/bin/bash
 set -ux
 
-FILE_NAME="${1:-paper}"
+ROOT_FILE="${1:-paper}"
+DATE=`TZ=UTC-9 date +"%Y.%m.%d.%H.%M"`
 
 # lint tex
-message=`textlint "**.tex"`
+message=`textlint -f pretty-error "**.tex"`
 
 # build pdf
-latexmk "$FILE_NAME.tex"
-
-DATE=`TZ=UTC-9 date +"%Y.%m.%d.%H.%M.%S"`
+latexmk "$ROOT_FILE.tex"
 
 # create release
 res=$(curl -H "Authorization: token $GITHUB_TOKEN" -X POST https://api.github.com/repos/$GITHUB_REPOSITORY/releases \
@@ -27,6 +26,7 @@ res=$(curl -H "Authorization: token $GITHUB_TOKEN" -X POST https://api.github.co
 rel_id=`echo $res | jq -r '.id'`
 
 # upload built pdf
-curl -H "Authorization: token $GITHUB_TOKEN" -X POST https://uploads.github.com/repos/$GITHUB_REPOSITORY/releases/${rel_id}/assets?name=$FILE_NAME.pdf\
-  --header "Content-Type: application/pdf"\
-  --upload-file out/$FILE_NAME.pdf
+curl -X POST https://uploads.github.com/repos/$GITHUB_REPOSITORY/releases/${rel_id}/assets?name=$ROOT_FILE.pdf \
+  -H "Authorization: token $GITHUB_TOKEN" \
+  -H "Content-Type: application/pdf" \
+  --upload-file out/$ROOT_FILE.pdf
