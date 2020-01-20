@@ -2,7 +2,7 @@
   "name": "latexmk-textlint",
   "dockerFile": "Dockerfile",
   "extensions": ["james-yu.latex-workshop", "taichi.vscode-textlint"],
-  "postCreateCommand": "npm i",
+  "postCreateCommand": "entrypoint.sh && npm i",
   "settings": {
     "editor.formatOnSave": true,
     "files.autoSave": "afterDelay",
