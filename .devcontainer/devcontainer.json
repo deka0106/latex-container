@@ -1,7 +1,8 @@
 {
   "name": "latex-container",
-  "image": "deka0106/latexmk-ja",
-  "extensions": ["james-yu.latex-workshop"],
+  "dockerFile": "Dockerfile",
+  "extensions": ["james-yu.latex-workshop", "taichi.vscode-textlint"],
+  "postCreateCommand": "npm i",
   "settings": {
     "editor.formatOnSave": true,
     "files.autoSave": "afterDelay",

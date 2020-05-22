@@ -1,3 +1,6 @@
+# Node.js dependency directories
+node_modules/
+
 ## Latexmk output directory:
 out/
 

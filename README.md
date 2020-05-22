@@ -19,3 +19,7 @@ VS Code Remote Developmentを用いたLaTeX環境
 
 * [文章校正機能](https://github.com/deka0106/latex-container/tree/textlint)
 * [PDFリリース機能](https://github.com/deka0106/latex-container/tree/release)
+
+## 文章校正機能
+
+[textlint](https://github.com/textlint/textlint)を用いて文章校正を行う機能

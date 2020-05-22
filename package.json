@@ -1,0 +1,12 @@
+{
+  "name": "latex-container",
+  "scripts": {
+    "lint": "textlint -f pretty-error *.tex"
+  },
+  "dependencies": {
+    "textlint": "^11.7.6",
+    "textlint-plugin-latex2e": "^1.0.0",
+    "textlint-rule-preset-ja-technical-writing": "^4.0.0",
+    "textlint-rule-preset-japanese": "^5.0.0"
+  }
+}
