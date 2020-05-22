@@ -19,3 +19,7 @@ VS Code Remote Developmentを用いたLaTeX環境
 
 * [文章校正機能](https://github.com/deka0106/latex-container/tree/textlint)
 * [PDFリリース機能](https://github.com/deka0106/latex-container/tree/release)
+
+## PDFリリース機能
+
+Tag付きでコミットするとPDFをビルド＆リリースする機能
