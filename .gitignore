@@ -1,7 +1,4 @@
-# Node.js dependency directories
-node_modules/
-
-## latexmk output directory:
+## Latexmk output directory:
 out/
 
 ## Core latex/pdflatex auxiliary files:

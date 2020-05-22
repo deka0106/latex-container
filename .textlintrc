@@ -1,9 +1,0 @@
-{
-  "rules": {
-    "preset-japanese": true,
-    "preset-ja-technical-writing": {
-      "max-kanji-continuous-len": false
-    }
-  },
-  "plugins": ["latex2e"]
-}
