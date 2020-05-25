@@ -14,3 +14,8 @@ VS Code Remote Developmentを用いたLaTeX環境
 2. VS Code Remote Containerでフォルダーを開く
 3. `.tex`, `.sty`, `.bib`ファイル等を配置する
 4. `.tex`ファイルを開き，タブでプレビューを開く
+
+## 追加機能
+
+* [文章校正機能](https://github.com/deka0106/latex-container/tree/textlint)
+* [PDFリリース機能](https://github.com/deka0106/latex-container/tree/release)
