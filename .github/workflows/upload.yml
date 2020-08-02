@@ -1,0 +1,26 @@
+name: Upload to Dropbox
+
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build pdf
+        uses: docker://deka0106/latexmk-ja
+        with:
+          args: latexmk paper.tex
+
+      - name: Upload to Dropbox
+        uses: deka0106/upload-to-dropbox@v1
+        with:
+          dropbox_access_token: ${{ secrets.DROPBOX_ACCESS_TOKEN }}
+          file: out/paper.pdf
+          path: /thesis/my-thesis.pdf
