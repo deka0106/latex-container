@@ -1,0 +1,51 @@
+name: Upload to Dropbox
+
+on:
+  push:
+    tags:
+      - "prefix-*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Set git tags as outputs
+        id: git_tags
+        run: |
+          echo "::set-output name=previous::$(git tag -l 'prefix-*' | tail -n 2 | head -n 1)"
+          echo "::set-output name=new::$(git tag -l 'prefix-*' | tail -n 1)"
+
+      - name: Build pdf
+        uses: docker://deka0106/latexmk-ja
+        with:
+          args: sh -c "latexmk -C && latexmk paper.tex"
+
+      - name: Upload pdf to Dropbox
+        uses: deka0106/upload-to-dropbox@v1
+        with:
+          dropbox_access_token: ${{ secrets.DROPBOX_ACCESS_TOKEN }}
+          file: out/paper.pdf
+          path: /thesis/my-thesis_${{ steps.git_tags.outputs.new }}.pdf
+
+      - name: Create diff tex by latexdiff
+        uses: docker://deka0106/latexmk-ja
+        with:
+          args: sh -c "latexdiff-vc -e utf8 --git --flatten -d diff -r ${{ steps.git_tags.outputs.previous }} paper.tex"
+
+      - name: Build diff pdf
+        uses: docker://deka0106/latexmk-ja
+        with:
+          args: sh -c "latexmk -C && latexmk diff/paper.tex"
+
+      - name: Upload diff pdf to Dropbox
+        uses: deka0106/upload-to-dropbox@v1
+        with:
+          dropbox_access_token: ${{ secrets.DROPBOX_ACCESS_TOKEN }}
+          file: out/paper.pdf
+          path: /thesis/my-thesis_${{ steps.git_tags.outputs.previous }}__${{ steps.git_tags.outputs.new }}.pdf
