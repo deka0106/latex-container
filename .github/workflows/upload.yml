@@ -27,11 +27,11 @@ jobs:
           args: sh -c "latexmk -C && latexmk paper.tex"
 
       - name: Upload pdf to Dropbox
-        uses: deka0106/upload-to-dropbox@v1
+        uses: deka0106/upload-to-dropbox@v2
         with:
           dropbox_access_token: ${{ secrets.DROPBOX_ACCESS_TOKEN }}
-          file: out/paper.pdf
-          path: /thesis/my-thesis_${{ steps.git_tags.outputs.new }}.pdf
+          src: out/paper.pdf
+          dest: /thesis/my-thesis_${{ steps.git_tags.outputs.new }}.pdf
 
       - name: Create diff tex by latexdiff
         uses: docker://deka0106/latexmk-ja
@@ -44,8 +44,8 @@ jobs:
           args: sh -c "latexmk -C && latexmk diff/paper.tex"
 
       - name: Upload diff pdf to Dropbox
-        uses: deka0106/upload-to-dropbox@v1
+        uses: deka0106/upload-to-dropbox@v2
         with:
           dropbox_access_token: ${{ secrets.DROPBOX_ACCESS_TOKEN }}
-          file: out/paper.pdf
-          path: /thesis/my-thesis_${{ steps.git_tags.outputs.previous }}__${{ steps.git_tags.outputs.new }}.pdf
+          src: out/paper.pdf
+          dest: /thesis/my-thesis_${{ steps.git_tags.outputs.previous }}__${{ steps.git_tags.outputs.new }}.pdf
