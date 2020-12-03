@@ -36,7 +36,7 @@ jobs:
       - name: Create diff tex by latexdiff
         uses: docker://deka0106/latexmk-ja
         with:
-          args: sh -c "latexdiff-vc -e utf8 --git --flatten -d diff -r ${{ steps.git_tags.outputs.previous }} paper.tex"
+          args: sh -c "latexdiff-vc -e utf8 -t CFONT --git --flatten -d diff -r ${{ steps.git_tags.outputs.previous }} paper.tex"
 
       - name: Build diff pdf
         uses: docker://deka0106/latexmk-ja
